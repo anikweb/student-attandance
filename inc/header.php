@@ -58,7 +58,7 @@
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="students.php" class="sl-menu-link <?= $current_page=='students.php' ? 'active' : '' ?>">
+        <a href="students.php" class="sl-menu-link <?php if($current_page=='students.php' || $current_page=='student-edit.php' ) echo 'active'; ?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-people tx-24"></i>
             <span class="menu-item-label">Students</span>

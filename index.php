@@ -1,5 +1,8 @@
 <?php
 require_once('inc/header.php');
+  $select = "SELECT * FROM students";
+  $query = mysqli_query($db,$select);
+  $assoc = mysqli_num_rows($query);
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -54,7 +57,7 @@ require_once('inc/header.php');
                 <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
               </div><!-- card-header -->
               <div class="d-flex align-items-center justify-content-between">
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">0</h3>
+                <h3 class="mg-b-0 tx-white tx-lato tx-bold"><?php echo($assoc) ?></h3>
               </div><!-- card-body -->
             </div><!-- card -->
           </div><!-- col-3 -->

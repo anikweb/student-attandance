@@ -83,10 +83,10 @@ $students = mysqli_query($db,$select);
                                                 <td><?php echo $value['contact_number'] ?></td>
                                                 <td><?php echo $value['email'] ?></td>
                                                 <td><?php echo $value['guardian_name'] ?></td>
-                                                <td><?php echo $value['gurdian_number'] ?></td>
+                                                <td><?php echo $value['guardian_number'] ?></td>
                                                 <td> 
-                                                    <a href="" class="btn btn-primary"> <i class="fa fa-edit"></i> Edit</a>    
-                                                    <a href="" class="btn btn-danger"> <i class="fa fa-trash"></i>  Delete</a>    
+                                                    <a href="student-edit.php?id=<?php echo $value['id'] ?>" class="btn btn-primary"> <i class="fa fa-edit"></i> Edit</a>    
+                                                    <a href="student-delete.php?id=<?php echo $value['id'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i>  Delete</a>    
                                                 </td>
                                             </tr>
                                         <?php } ?>
