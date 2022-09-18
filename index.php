@@ -40,7 +40,7 @@ require_once('inc/header.php');
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.html">Student Attandance</a>
+        <a class="breadcrumb-item" href="index.php">Student Attandance</a>
         <span class="breadcrumb-item active">Dashboard</span>
       </nav>
 
@@ -85,7 +85,6 @@ require_once('inc/header.php');
       </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-
     <script src="lib/jquery/jquery.js"></script>
     <script src="lib/popper.js/popper.js"></script>
     <script src="lib/bootstrap/bootstrap.js"></script>

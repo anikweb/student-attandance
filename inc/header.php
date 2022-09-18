@@ -1,3 +1,9 @@
+<?php
+    require_once('db.php');
+    $php_self = $_SERVER['PHP_SELF'];
+    $cpage_explode = explode('/',$php_self);
+    $current_page =end($cpage_explode);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,20 +51,20 @@
     <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i>Teacher</a></div>
     <div class="sl-sideleft">
       <label class="sidebar-label">Navigation</label>
-      <div class="sl-sideleft-menu"> ;
-        <a href="" class="sl-menu-link active">
+      <div class="sl-sideleft-menu">
+        <a href="index.php" class="sl-menu-link <?= $current_page=='index.php' ? 'active' : '' ?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="#" class="sl-menu-link">
+        <a href="students.php" class="sl-menu-link <?= $current_page=='students.php' ? 'active' : '' ?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-people tx-24"></i>
             <span class="menu-item-label">Students</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="#" class="sl-menu-link">
+        <a href="add-student.php" class="sl-menu-link <?= $current_page=='add-student.php' ? 'active' : '' ?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-plus tx-24"></i>
             <span class="menu-item-label">Add Student</span>
