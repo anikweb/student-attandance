@@ -1,5 +1,12 @@
 <?php
-require_once('inc/header.php');
+if($_SERVER['REQUEST_METHOD'] =="POST"){
+    require_once('inc/header.php');
+    $department = $_POST['department'];
+    $session = $_POST['session'];
+    $semester = $_POST['semester'];
+    
+    $select = "SELECT * FROM students WHERE department='$department' AND session='$session' AND semester='$semester'";
+    $query = mysqli_query($db,$select);
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -46,9 +53,12 @@ require_once('inc/header.php');
         <div class="sl-pagebody">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#" method="POST">
+                    <form action="student-attandance-post.php" method="POST">
+                        <input type="hidden" name="department" value="<?php echo $department?>">
+                        <input type="hidden" name="session" value="<?php echo $session?>">
+                        <input type="hidden" name="semester" value="<?php echo $semester?>">
                         <div class="card pd-20 pd-sm-40 text-center">
-                            <h5 class="card-body-title">Take Attandance</h5>
+                            <h5 class="card-body-title">Take Attandance for <?php echo date('d/M/Y')?></h5>
                             <div class="form-layout">
                                 <div class="row mg-b-25">
                                     <div class="col-lg-8 m-auto">
@@ -56,25 +66,30 @@ require_once('inc/header.php');
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>Students Name</th>
-                                                        <th>Department</th>
-                                                        <th>Roll</th>
-                                                        <th>Session</th>
-                                                        <th>Semester</th>
-                                                        <th class="text-center">Action</th>
+                                                        <th class="text-center">#</th>
+                                                        <th class="text-center">Students Name</th>
+                                                        <th class="text-center">Department</th>
+                                                        <th class="text-center">Roll</th>
+                                                        <th class="text-center">Session</th>
+                                                        <th class="text-center">Semester</th>
+                                                        <th class="text-center">Attandance</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
+                                                    <?php foreach ($query as $key => $value) { ?>
+                                                        <tr>
+                                                            <td><?php echo $key +1 ?></td>
+                                                            <td><?php echo $value['student_name']?></td>
+                                                            <td><?php echo ucfirst($value['department'])?></td>
+                                                            <td><?php echo $value['roll']?></td>
+                                                            <td><?php echo $value['session']?></td>
+                                                            <td><?php echo $value['semester']?></td>
+                                                            <td>
+                                                                <!-- <input type="hidden" name="student_id[]" value="<?php echo $value['id']?>"> -->
+                                                                <input type="checkbox" value="<?php echo $value['id']?>" name="status[]">
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -91,4 +106,11 @@ require_once('inc/header.php');
         </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-<?php require_once('inc/footer.php') ?>
+<?php 
+
+require_once('inc/footer.php');
+
+}else {
+    echo 'sorry';
+}
+?>

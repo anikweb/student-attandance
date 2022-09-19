@@ -46,7 +46,7 @@ require_once('inc/header.php');
         <div class="sl-pagebody">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#" method="POST">
+                    <form action="student-attandance.php" method="POST">
                         <div class="card pd-20 pd-sm-40">
                             <h5 class="card-body-title">Search Batch</h5>
                             <div class="form-layout">

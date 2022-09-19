@@ -74,7 +74,7 @@ require_once('inc/header.php');
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Roll: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="roll" placeholder="Enter Roll">
+                                            <input class="form-control" type="number" name="roll" placeholder="Enter Roll">
                                         </div>
                                     </div><!-- col-4 -->
                                     <div class="col-lg-4">
