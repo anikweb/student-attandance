@@ -4,9 +4,20 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
     $department = $_POST['department'];
     $session = $_POST['session'];
     $semester = $_POST['semester'];
+    $date = date('Y-m-d') ;
     
-    $select = "SELECT * FROM students WHERE department='$department' AND session='$session' AND semester='$semester'";
+    $select2 = "SELECT * FROM students WHERE department='$department' AND session='$session' AND semester='$semester'";
+    $query2 = mysqli_query($db,$select2);
+    $assoc2 = mysqli_fetch_assoc($query2);
+    $student_id2 = $assoc2['id'];
+
+    $select = "SELECT * FROM attandance WHERE date= '$date' AND student_id='$student_id2' ";
     $query = mysqli_query($db,$select);
+
+    $rows = mysqli_num_rows($query);
+    if($rows >0){
+        header('location: taken-already.php');
+    }
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -76,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach ($query as $key => $value) { ?>
+                                                    <?php foreach ($query2 as $key => $value) { ?>
                                                         <tr>
                                                             <td><?php echo $key +1 ?></td>
                                                             <td><?php echo $value['student_name']?></td>
@@ -85,8 +96,11 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
                                                             <td><?php echo $value['session']?></td>
                                                             <td><?php echo $value['semester']?></td>
                                                             <td>
-                                                                <!-- <input type="hidden" name="student_id[]" value="<?php echo $value['id']?>"> -->
-                                                                <input type="checkbox" value="<?php echo $value['id']?>" name="status[]">
+                                                                <input type="hidden" name="student_id[]" value="<?php echo $value['id']?>">
+                                                                <select name="status[]" id="" class="form-control">
+                                                                    <option value="false">Absent</option>
+                                                                    <option value="true">Present</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
