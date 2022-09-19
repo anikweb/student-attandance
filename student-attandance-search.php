@@ -1,13 +1,12 @@
 <?php
 require_once('inc/header.php');
-
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
-      <div class="sl-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
-      </div><!-- sl-header-left -->
+        <div class="sl-header-left">
+            <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
+            <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+        </div><!-- sl-header-left -->
       <div class="sl-header-right">
         <nav class="nav">
           <div class="dropdown">
@@ -47,19 +46,13 @@ require_once('inc/header.php');
         <div class="sl-pagebody">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="student-post.php" method="POST">
+                    <form action="#" method="POST">
                         <div class="card pd-20 pd-sm-40">
-                            <h6 class="card-body-title">Add New Student</h6>
+                            <h5 class="card-body-title">Search Batch</h5>
                             <div class="form-layout">
                                 <div class="row mg-b-25">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label">Student Name: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="name" placeholder="Enter Name">
-                                        </div>
-                                    </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group mg-b-10-force">
                                             <label class="form-control-label">Department: <span class="tx-danger">*</span></label>
                                             <select class="form-control select2" data-placeholder="Choose Department" name="department">
                                                 <option label="Choose Department"></option>
@@ -69,12 +62,6 @@ require_once('inc/header.php');
                                                 <option value="electrical">Electrical</option>
                                                 <option value="mechanical">Mechanical</option>
                                             </select>
-                                        </div>
-                                    </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Roll: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="roll" placeholder="Enter Roll">
                                         </div>
                                     </div><!-- col-4 -->
                                     <div class="col-lg-4">
@@ -114,33 +101,9 @@ require_once('inc/header.php');
                                             </select>
                                         </div>
                                     </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Contact Number: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="contactNumber" placeholder="Enter Contact Number">
-                                        </div>
-                                    </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">E-mail: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="email" name="email" placeholder="Enter Email Address">
-                                        </div>
-                                    </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Guardian Name: <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="guardianName" placeholder="Enter Guardian Name">
-                                        </div>
-                                    </div><!-- col-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Contact Number(Guardian): <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="text" name="contactNumberGurdian" placeholder="Enter Contact Number (Guardian)">
-                                        </div>
-                                    </div><!-- col-4 -->
                                 </div><!-- row -->
                                 <div class="form-layout-footer">
-                                    <button type="submit" class="btn btn-info mg-r-5"><i class="fa fa-plus-circle"></i> Add New Student</button>
+                                    <button type="submit" class="btn btn-info mg-r-5"><i class="fa fa-search"></i> Search Batch</button>
                                 </div><!-- form-layout-footer -->
                             </div><!-- form-layout -->
                         </div><!-- card -->
@@ -150,4 +113,4 @@ require_once('inc/header.php');
         </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-    <?php require_once('inc/footer.php') ?>
+<?php require_once('inc/footer.php') ?>

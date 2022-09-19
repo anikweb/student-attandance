@@ -70,7 +70,7 @@
             <span class="menu-item-label">Add Student</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="#" class="sl-menu-link">
+        <a href="student-attandance-search.php" class="sl-menu-link <?= $current_page=='student-attandance-search.php' ? 'active' : '' ?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-plus tx-24"></i>
             <span class="menu-item-label">Take Attandance</span>

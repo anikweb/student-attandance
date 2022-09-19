@@ -67,12 +67,12 @@ $students = mysqli_query($db,$select);
                                             <th>E-mail</th>
                                             <th>Guardian Name</th>
                                             <th>Contact Number(Guardian )</th>
-                                            <th>Action</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                    <tbody>
                                         <?php 
-                                        foreach ($students as $key => $value) { ?>
+                                          foreach ($students as $key => $value) { ?>
                                             <tr>
                                                 <td><?php echo $key + 1 ?></td>
                                                 <td><?php echo $value['student_name'] ?></td>
@@ -84,7 +84,7 @@ $students = mysqli_query($db,$select);
                                                 <td><?php echo $value['email'] ?></td>
                                                 <td><?php echo $value['guardian_name'] ?></td>
                                                 <td><?php echo $value['guardian_number'] ?></td>
-                                                <td> 
+                                                <td class="text-center"> 
                                                     <a href="student-edit.php?id=<?php echo $value['id'] ?>" class="btn btn-primary"> <i class="fa fa-edit"></i> Edit</a>    
                                                     <a href="student-delete.php?id=<?php echo $value['id'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i>  Delete</a>    
                                                 </td>
@@ -100,21 +100,4 @@ $students = mysqli_query($db,$select);
         </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="lib/popper.js/popper.js"></script>
-    <script src="lib/bootstrap/bootstrap.js"></script>
-    <script src="lib/jquery-ui/jquery-ui.js"></script>
-    <script src="lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
-    <script src="lib/d3/d3.js"></script>
-    <script src="lib/rickshaw/rickshaw.min.js"></script>
-    <script src="lib/chart.js/Chart.js"></script>
-    <script src="lib/Flot/jquery.flot.js"></script>
-    <script src="lib/Flot/jquery.flot.pie.js"></script>
-    <script src="lib/Flot/jquery.flot.resize.js"></script>
-    <script src="lib/flot-spline/jquery.flot.spline.js"></script>
-    <script src="js/starlight.js"></script>
-    <script src="js/ResizeSensor.js"></script>
-    <script src="js/dashboard.js"></script>
-  </body>
-</html>
+    <?php require_once('inc/footer.php') ?>
