@@ -1,8 +1,14 @@
 <?php
     require_once('db.php');
+    require_once('admin/checkpoint.php');
     $php_self = $_SERVER['PHP_SELF'];
     $cpage_explode = explode('/',$php_self);
     $current_page =end($cpage_explode);
+    $userId = $_SESSION['id'];
+
+    $selectUser = "SELECT * FROM users WHERE id='$userId'";
+    $queryUser = mysqli_query($db,$selectUser);
+    $assocUser = mysqli_fetch_assoc($queryUser);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +47,7 @@
     <link href="lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="css/starlight.css">
   </head>
@@ -70,10 +77,16 @@
             <span class="menu-item-label">Add Student</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="student-attandance-search.php" class="sl-menu-link <?= $current_page=='student-attandance-search.php' ? 'active' : '' ?>">
+        <a href="student-attandance-search.php" class="sl-menu-link <?php if($current_page=='student-attandance-search.php' || $current_page=='student-attandance.php' || $current_page=='student-empty.php' || $current_page=='taken.php' || $current_page=='taken-already.php'){echo 'active';}?>">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-plus tx-24"></i>
             <span class="menu-item-label">Take Attandance</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="admin/logout-post.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon fa fa-sign-out tx-24"></i>
+            <span class="menu-item-label">Log out</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
       </div><!-- sl-sideleft-menu -->

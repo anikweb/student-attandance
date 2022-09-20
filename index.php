@@ -3,6 +3,11 @@ require_once('inc/header.php');
   $select = "SELECT * FROM students";
   $query = mysqli_query($db,$select);
   $assoc = mysqli_num_rows($query);
+
+  $date = date('Y-m-d');
+  $select2 = "SELECT * FROM attandance WHERE date='$date'";
+  $query2 = mysqli_query($db,$select2);
+  $rows = mysqli_num_rows($query2);
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -14,7 +19,7 @@ require_once('inc/header.php');
         <nav class="nav">
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-              <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
+              <span class="logged-name"><?php echo $assocUser['name'];?></span>
               <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
@@ -44,7 +49,7 @@ require_once('inc/header.php');
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.php">Student Attandance</a>
-        <span class="breadcrumb-item active">Dashboard</span>
+        <span class="breadcrumb-item active">Dashboard </span>
       </nav>
 
       <div class="sl-pagebody">
@@ -68,22 +73,10 @@ require_once('inc/header.php');
                 <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
               </div><!-- card-header -->
               <div class="d-flex align-items-center justify-content-between">
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">0</h3>
+                <h3 class="mg-b-0 tx-white tx-lato tx-bold"><?php echo  $rows ?></h3>
               </div><!-- card-body -->
             </div><!-- card -->
-          </div><!-- col-3 -->
-          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-            <div class="card pd-20 bg-sl-primary">
-              <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Total Present (This Month)</h6>
-                <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
-              </div><!-- card-header -->
-              <div class="d-flex align-items-center justify-content-between">
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">0</h3>
-              </div><!-- card-body -->
-              </div><!-- -->
-            </div><!-- card -->
-          </div><!-- col-3 -->
+          </div><!-- col-3 --> 
         </div><!-- row -->
       </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->

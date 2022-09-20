@@ -1,6 +1,14 @@
 <?php
     require_once('inc/header.php');
-      
+    $department = $_SESSION['department'];
+    $session = $_SESSION['session'];
+    $semester = $_SESSION['semester'];
+
+    $select = "SELECT * FROM students WHERE department='$department' AND session='$session' AND semester='$semester'";
+    $query = mysqli_query($db,$select);
+
+    
+
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -46,17 +54,82 @@
         </nav>
         <div class="sl-pagebody">
             <div class="row">
+              <div class="col-sm-6 col-xl-3 mb-3">
+                  <div class="card pd-20 bg-primary ">
+                    <div class="d-flex justify-content-between align-items-center mg-b-10">
+                      <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Department</h6>
+                      <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
+                    </div><!-- card-header -->
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <h4 class="mg-b-0 tx-white tx-bold "><?php echo ucfirst($department) ?></h4>
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+              </div><!-- col-3 -->
+              <div class="col-sm-6 col-xl-3 mb-3">
+                  <div class="card pd-20 bg-purple">
+                    <div class="d-flex justify-content-between align-items-center mg-b-10">
+                      <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Semester</h6>
+                      <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
+                    </div><!-- card-header -->
+                      <div class="d-flex align-items-center justify-content-between">
+                          <h4 class="mg-b-0 tx-white tx-bold"><?php echo ucfirst($semester) ?></h4>
+                      </div><!-- card-body -->
+                  </div><!-- card -->
+              </div><!-- col-3 -->
+              <div class="col-sm-6 col-xl-3 mb-3">
+                  <div class="card pd-20 bg-danger">
+                    <div class="d-flex justify-content-between align-items-center mg-b-10">
+                      <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Session</h6>
+                      <a href="" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
+                    </div><!-- card-header -->
+                      <div class="d-flex align-items-center justify-content-between">
+                          <h4 class="mg-b-0 tx-white tx-bold"><?php echo ucfirst($session) ?></h4>
+                      </div><!-- card-body -->
+                  </div><!-- card -->
+              </div><!-- col-3 -->
                 <div class="col-md-12">
-                    <form action="student-attandance-post.php" method="POST">
-                        <input type="hidden" name="department" value="<?php echo $department?>">
-                        <input type="hidden" name="session" value="<?php echo $session?>">
-                        <input type="hidden" name="semester" value="<?php echo $semester?>">
-                        <div class="card pd-20 pd-sm-40 text-center">
-                            <h5 class="card-body-title">Take Attandance for <?php echo date('d/M/Y')?></h5>
-                            <h3>Attandance Taken</h3>
+                  <div class="card pd-20 pd-sm-40 text-center">
+                      <h3 class="text-primary">Attandance Taken for <?php echo date('d/M/Y')?></h3>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">Students Name</th>
+                              <th class="text-center">Department</th>
+                              <th class="text-center">Roll</th>
+                              <th class="text-center">Session</th>
+                              <th class="text-center">Semester</th>
+                              <th class="text-center">Attandance</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php foreach($query as $key=> $value){ ?>
+                            <?php
+                              $student_id=  $value['id'];
+                              $date = date('Y-m-d');
+                              $select2 = "SELECT * FROM attandance WHERE student_id='$student_id' AND date='$date'";
+                              $query2 = mysqli_query($db,$select2);
+                              $assoc = mysqli_fetch_assoc($query2);
+                              $keypro = $key+1;
+                            ?>
                             
-                        </div><!-- card -->
-                    </form>
+                            <tr>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$keypro.'</span>';}else{echo '<span class="text-danger">'.$keypro.'</span>';} ?></td>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$value['student_name'].'</span>';}else{echo '<span class="text-danger">'.$value['student_name'].'</span>';} ?></td>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$value['department'].'</span>';}else{echo '<span class="text-danger">'.$value['department'].'</span>';} ?></td>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$value['roll'].'</span>';}else{echo '<span class="text-danger">'.$value['roll'].'</span>';}  ?></td>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$value['session'].'</span>';}else{echo '<span class="text-danger">'.$value['session'].'</span>';}  ?></td>
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success">'.$value['semester'].'</span>';}else{echo '<span class="text-danger">'.$value['semester'].'</span>';}  ?></td>
+                              
+                              <td><?php if($assoc['status'] == 'true'){echo '<span class="text-success"><i class="fa fa-circle"></i> Present</span>';}else{echo '<span class="text-danger"><i class="fa fa-circle"></i> Absent</span>';} ?></td>
+                            </tr>
+                            <?php }?>
+                          </tbody>
+                        </table>
+                      </div>
+                  </div><!-- card -->
+                  
                 </div>
             </div><!-- row -->
         </div><!-- sl-pagebody -->

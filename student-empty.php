@@ -1,28 +1,9 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] =="POST"){
     require_once('inc/header.php');
-    $_SESSION['department'] = $department = $_POST['department'];
-    $_SESSION['session'] = $session = $_POST['session'];
-    $_SESSION['semester'] = $semester = $_POST['semester'];
+    $department = $_SESSION['department'];
+    $session = $_SESSION['session'];
+    $semester = $_SESSION['semester'];
     $date = date('Y-m-d') ;
-    
-    $select2 = "SELECT * FROM students WHERE department='$department' AND session='$session' AND semester='$semester'";
-    $query2 = mysqli_query($db,$select2);
-    $assoc2 = mysqli_fetch_assoc($query2);
-    $student_id2 = $assoc2['id'];
-    if($query2){
-        header('location: student-empty.php');
-    }
-    $select = "SELECT * FROM attandance WHERE date= '$date' AND student_id='$student_id2' ";
-    $query = mysqli_query($db,$select);
-
-    $rows = mysqli_num_rows($query);
-    if($rows >0){
-        $_SESSION['department'] = $department;
-        $_SESSION['session'] = $session;
-        $_SESSION['semester'] = $semester;
-        header('location: taken-already.php');
-    }
 ?>
     <!-- ########## START: HEAD PANEL ########## -->
     <div class="sl-header">
@@ -102,57 +83,11 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
                     </div><!-- card -->
                 </div><!-- col-3 -->
                 <div class="col-md-12">
-                    <form action="student-attandance-post.php" method="POST">
-                        <input type="hidden" name="department" value="<?php echo $department?>">
-                        <input type="hidden" name="session" value="<?php echo $session?>">
-                        <input type="hidden" name="semester" value="<?php echo $semester?>">
-                        <div class="card pd-20 pd-sm-40 text-center">
-                            <h5 class="card-body-title">Take Attandance for <?php echo date('d/M/Y')?></h5>
-                            <div class="form-layout">
-                                <div class="row mg-b-25">
-                                    <div class="col-lg-8 m-auto">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center">#</th>
-                                                        <th class="text-center">Students Name</th>
-                                                        <th class="text-center">Department</th>
-                                                        <th class="text-center">Roll</th>
-                                                        <th class="text-center">Session</th>
-                                                        <th class="text-center">Semester</th>
-                                                        <th class="text-center">Attandance</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($query2 as $key => $value) { ?>
-                                                        <tr>
-                                                            <td><?php echo $key +1 ?></td>
-                                                            <td><?php echo $value['student_name']?></td>
-                                                            <td><?php echo ucfirst($value['department'])?></td>
-                                                            <td><?php echo $value['roll']?></td>
-                                                            <td><?php echo $value['session']?></td>
-                                                            <td><?php echo $value['semester']?></td>
-                                                            <td>
-                                                                <input type="hidden" name="student_id[]" value="<?php echo $value['id']?>">
-                                                                <select name="status[]" id="" class="form-control">
-                                                                    <option value="false">Absent</option>
-                                                                    <option value="true">Present</option>
-                                                                </select>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div><!-- col-4 -->
-                                </div><!-- row -->
-                                <div class="form-layout-footer text-center">
-                                    <button type="submit" class="btn btn-info mg-r-5"><i class="fa fa-plus-circle"></i> Submit</button>
-                                </div><!-- form-layout-footer -->
-                            </div><!-- form-layout -->
-                        </div><!-- card -->
-                    </form>
+                   <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center"><i class="fa fa-exclamation-circle"></i> No student's addmited yet</h4>
+                    </div>
+                   </div>
                 </div>
             </div><!-- row -->
         </div><!-- sl-pagebody -->
@@ -162,7 +97,4 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
 
 require_once('inc/footer.php');
 
-}else {
-    echo 'sorry';
-}
 ?>

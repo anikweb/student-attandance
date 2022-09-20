@@ -54,7 +54,7 @@ require_once('inc/header.php');
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Department: <span class="tx-danger">*</span></label>
-                                            <select class="form-control select2" data-placeholder="Choose Department" name="department">
+                                            <select required class="form-control select2" data-placeholder="Choose Department" name="department">
                                                 <option label="Choose Department"></option>
                                                 <option value="computer">Computer</option>
                                                 <option value="civil">Civil</option>
@@ -67,7 +67,7 @@ require_once('inc/header.php');
                                     <div class="col-lg-4">
                                         <div class="form-group mg-b-10-force">
                                             <label class="form-control-label">Session: <span class="tx-danger">*</span></label>
-                                            <select class="form-control select2" data-placeholder="Choose Session" name="session">
+                                            <select required class="form-control select2" data-placeholder="Choose Session" name="session">
                                                 <option label="Choose Session"></option>
                                                 <option value="10-11">10-11</option>
                                                 <option value="11-12">11-12</option>
@@ -88,7 +88,7 @@ require_once('inc/header.php');
                                     <div class="col-lg-4">
                                         <div class="form-group mg-b-10-force">
                                             <label class="form-control-label">Semester:<span class="tx-danger">*</span></label>
-                                            <select class="form-control select2" data-placeholder="Choose Semester" name="semester">
+                                            <select required class="form-control select2" data-placeholder="Choose Semester" name="semester">
                                                 <option label="Choose Semester"></option>
                                                 <option value="1st">1st</option>
                                                 <option value="2nd">2nd</option>

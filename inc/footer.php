@@ -15,5 +15,6 @@
     <script src="js/starlight.js"></script>
     <script src="js/ResizeSensor.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   </body>
 </html>

@@ -54,7 +54,7 @@ $students = mysqli_query($db,$select);
                         <div class="card pd-20 pd-sm-40">
                             <h6 class="card-body-title">All Student</h6>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-striped" id="example" >
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -99,5 +99,11 @@ $students = mysqli_query($db,$select);
             </div><!-- row -->
         </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
-    <!-- ########## END: MAIN PANEL ########## -->
+    <!-- ########## END: MAIN PANEL ########## -->\
+
     <?php require_once('inc/footer.php') ?>
+    <script>
+        $(document).ready(function () {
+          $('#example').DataTable();
+        });
+    </script>
