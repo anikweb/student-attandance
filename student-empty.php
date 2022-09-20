@@ -85,7 +85,7 @@
                 <div class="col-md-12">
                    <div class="card">
                     <div class="card-body">
-                        <h4 class="text-center"><i class="fa fa-exclamation-circle"></i> No student's addmited yet</h4>
+                        <h4 class="text-center"><i class="fa fa-exclamation-circle"></i> No student's admited yet</h4>
                     </div>
                    </div>
                 </div>
